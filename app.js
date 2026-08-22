@@ -1,3 +1,13 @@
-const username = window.prompt('Digite seu nome: ');
+function teste () {
+    const username = window.prompt('Digite seu nome: ');
 
-window.alert('Ola, ' + username + ' seja bem vindo')
+    if (!username){
+        if (username !== '') return window.alert("Operação cancelada")
+
+        return window.alert("Ola! Seja bem vindo")
+    }
+
+    window.alert("Ola " + username + " Seja bem vindo")
+}
+
+teste();
