@@ -23,6 +23,8 @@ greet();
 
 let balance = 0;
 
+const statement = [];
+
 const operations = {
     check: () => {
         alert('Saldo Atual: R$ ' + balance);
@@ -30,16 +32,58 @@ const operations = {
     deposit: () => {
         const value = Number(window.prompt('Valor do deposito:'))
 
+        if (value < 0) {
+            window.alert('Operação negada')
+            return operations.deposit();
+        } else if (isNaN(value)) {
+            window.alert('Operação negada')
+            return operations.deposit();
+        }
+
         balance = balance + value;
 
+        statement[statement.length] = {
+            type: 'Deposito',
+            value: Number(value)
+        };
+
         window.alert("Saldo Atual: R$ " + balance)
+
+
+
     },
     cashout: () => {
         const value = Number(window.prompt('Valor do saque:'))
-
+        if (value < 0) {
+            window.alert('Operação negada')
+            return operations.cashout();
+        } else if (isNaN(value)) {
+            window.alert('Operação negada')
+            return operations.cashout();
+        } else if (value > balance){
+            window.alert('Saldo indisponivel')
+            return operations.cashout();
+        }
+        
         balance = balance - value;
 
+        statement[statement.length] = {
+            type: 'Saque',
+            value: Number(value)
+        };
+
+
         window.alert("Saldo Atual: R$ " + balance)
+    },
+    statement: () => {
+        if (statement.length === 0) {
+            return window.alert('Nenhuma transação realizada')
+        }
+
+        let text = 'Extrato:\n\n'
+        for (let i = 0; i < statement.length; i++) {
+            text += `${statement[i].type} = R$ ${statement[i].value}\n`
+        }
     },
     exit: () => {
         window.alert("Foi um prazer atende-lo")
@@ -57,7 +101,8 @@ while (repeat) {
     1 - Consultar
     2 - Depositar
     3 - Sacar
-    4 - Sair
+    4 - Extrato
+    5 - Sair
 
     0 - Cancelar
     `));
@@ -67,20 +112,23 @@ while (repeat) {
         repeat = false;
     } else if (isNaN(operation)) {
         window.alert('Digite um numero válido')
-    } else if (isNaN(operation === '' )) {
+    } else if (isNaN(operation === '')) {
         window.alert('Digite um numero válido')
+    } else {
+
+        switch (operation) {
+            case 1: operations.check(); break;
+            case 2: operations.deposit(); break;
+            case 3: operations.cashout(); break;
+            case 4: operations.statement(); break;
+            case 5: operations.exit(); break;
+
+            default: operation.invalid();
+        }
     }
 
 
 
-    switch (operation) {
-        case 1: operations.check(); break;
-        case 2: operations.deposit(); break;
-        case 3: operations.cashout(); break;
-        case 4: operations.exit(); break;
-
-        default: operation.invalid(); 
-    }
 
 }
 
