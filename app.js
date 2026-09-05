@@ -30,7 +30,13 @@ const operations = {
         alert('Saldo Atual: R$ ' + balance);
     },
     deposit: () => {
-        const value = Number(window.prompt('Valor do deposito:'))
+        const response = window.prompt('Valor do deposito:')
+
+        if (response === null) {
+            return window.alert('Operacao cancelada');
+        };
+
+        const value = Number(response);
 
         if (value < 0) {
             window.alert('Operação negada')
@@ -44,7 +50,7 @@ const operations = {
 
         statement[statement.length] = {
             type: 'Deposito',
-            value: Number(value)
+            value: value
         };
 
         window.alert("Saldo Atual: R$ " + balance)
@@ -53,23 +59,30 @@ const operations = {
 
     },
     cashout: () => {
-        const value = Number(window.prompt('Valor do saque:'))
+        const response = (window.prompt('Valor do saque:'))
+
+        if(response === null){
+            return window.alert('Operacao negada');
+        }
+
+        const value = Number(response);
+
         if (value < 0) {
             window.alert('Operação negada')
             return operations.cashout();
         } else if (isNaN(value)) {
             window.alert('Operação negada')
             return operations.cashout();
-        } else if (value > balance){
+        } else if (value > balance) {
             window.alert('Saldo indisponivel')
             return operations.cashout();
         }
-        
+
         balance = balance - value;
 
         statement[statement.length] = {
             type: 'Saque',
-            value: Number(value)
+            value: value
         };
 
 
@@ -86,6 +99,12 @@ const operations = {
         }
     },
     exit: () => {
+        const  response = window.confirm('Deseja realmente sair?');
+
+        if (!response){
+            return;
+        }
+
         window.alert("Foi um prazer atende-lo")
         repeat = false;
     },
