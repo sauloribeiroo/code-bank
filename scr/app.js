@@ -5,7 +5,6 @@ const checkButton = document.querySelector('#check');
 const depositButton = document.querySelector('#deposit');
 const cashoutButton = document.querySelector('#cashout');
 const statementButton = document.querySelector('#statement');
-const exitButton = document.querySelector('#exit');
 
 
 let repeat = true;
@@ -188,8 +187,4 @@ cashoutButton.addEventListener('click', () => {
 
 statementButton.addEventListener('click', () => {
     operations.statement();
-})
-
-exitButton.addEventListener('click', () => {
-    operations.exit();
 })
