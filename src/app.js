@@ -104,7 +104,7 @@ const operations = {
 
 
         setTimeout(() => {
-            window.location.href = '../index.html';
+            window.location.href = '../login.html';
         }, 3000);
     }
 }

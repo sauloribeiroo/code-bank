@@ -1,23 +1,23 @@
 const button = document.querySelector('button');
 
-function greet() {
-    const username = window.prompt('Digite seu nome:');
+//function greet() {
+//  const username = window.prompt('Digite seu nome:');
+//
+// if (!username) {
+//  if (username !== '') {
+//        return window.alert('Operação cancelada.');
+//      }
+//
+//    window.sessionStorage.setItem('username', username)
+//      return window.location.href = './src/app.html';
+//
+// }
+//
+//  window.alert(`Olá, ${username}! Seja bem vindo.`);
+//
+//    window.sessionStorage.setItem('username', username)
+//    window.location.href = './src/app.html';
+//}
 
-    if (!username) {
-        if (username !== '') {
-            return window.alert('Operação cancelada.');
-        }
-        
-        window.sessionStorage.setItem('username', username)
-        return window.location.href = './src/app.html';
-
-    }
-
-    window.alert(`Olá, ${username}! Seja bem vindo.`);
-
-    window.sessionStorage.setItem('username', username)
-    window.location.href = './src/app.html';
-}
-
-button.addEventListener('click', () => greet());
+button.addEventListener('click', () => window.location.href ='./src/login.html');
 
