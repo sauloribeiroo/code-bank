@@ -3,7 +3,7 @@ const email = document.querySelector('input[type="email"]');
 const password = document.querySelector('input[type="password"]');
 const button = document.querySelector('button');
 
-const getDatas = JSON.parse(sessionStorage.getItem('database'));
+const getDatas = JSON.parse(sessionStorage.getItem('database')) || [];
 const datas = [...getDatas];
 
 button.addEventListener('click', (event) => {
@@ -15,7 +15,7 @@ button.addEventListener('click', (event) => {
 
     if (emailValue === '' || passwordValue === '')
         return window.alert('Os campos de email e/ou senha precisam estar preechidos.');
-    
+
     for (let i = 0; i < datas.length; i++) {
         if (datas[i].email === emailValue) {
             return alert('Este email já está cadastrado.');
