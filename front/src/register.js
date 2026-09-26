@@ -7,23 +7,29 @@ const getDatas = JSON.parse(sessionStorage.getItem('database'));
 const datas = [...getDatas];
 
 button.addEventListener('click', (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const nameValue = name.value;
-  const emailValue = email.value;
-  const passwordValue = password.value;
+    const nameValue = name.value;
+    const emailValue = email.value;
+    const passwordValue = password.value;
 
-  if (emailValue === '' || passwordValue === '')
-    return window.alert('Os campos de email e/ou senha precisam estar preechidos.');
+    if (emailValue === '' || passwordValue === '')
+        return window.alert('Os campos de email e/ou senha precisam estar preechidos.');
+    
+    for (let i = 0; i < datas.length; i++) {
+        if (datas[i].email === emailValue) {
+            return alert('Este email já está cadastrado.');
+        }
+    }
 
-  datas[datas.length] = {
-    name: nameValue || 'usuário',
-    email: emailValue,
-    password: passwordValue
-  };
+    datas[datas.length] = {
+        name: nameValue || 'usuário',
+        email: emailValue,
+        password: passwordValue
+    };
 
-  sessionStorage.setItem('database', JSON.stringify(datas));
-  window.alert('Cadastro realizado com sucesso.');
+    sessionStorage.setItem('database', JSON.stringify(datas));
+    window.alert('Cadastro realizado com sucesso.');
 
-  window.location.href = './login.html';
+    window.location.href = './login.html';
 });
