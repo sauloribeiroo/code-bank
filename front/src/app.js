@@ -96,16 +96,25 @@ const operations = {
 
         if (!username) {
             window.alert("Foi um prazer atende-lo")
-        } else 
-        window.alert("Foi um prazer atende-lo " + username)
+        } else
+            window.alert("Foi um prazer atende-lo " + username)
+
 
         exit.disabled = true;
-        exit.textContent = 'Saindo...'
+        check.disabled = true;
+        deposit.disabled = true;
+        cashout.disabled = true;
+        statement.disabled = true;
 
+        
+        setTimeout(() => exit.textContent = 'Saindo.', 0);
+        setTimeout(() => exit.textContent = 'Saindo..', 500);
+        setTimeout(() => exit.textContent = 'Saindo...', 1000);
+        setTimeout(() => exit.textContent = 'Saindo.', 1500);
+        setTimeout(() => exit.textContent = 'Saindo..', 2000);
+        setTimeout(() => exit.textContent = 'Saindo...', 2500);
 
-        setTimeout(() => {
-            window.location.href = '../login.html';
-        }, 3000);
+        setTimeout(() => window.location.href = './login.html', 3000);
     }
 }
 
